@@ -10,18 +10,25 @@ import { Link } from "react-router-dom";
 function Home() {
   // Generam endpoint-urile pentru categoriile de stiri.
   const technologyNewsEndpoint = getNewsCategoriesEndpoint("technology", 1, 6);
-  const footballNewsEndpoint = getNewsCategoriesEndpoint("football", 1, 6);
+  const businessNewsEndpoint = getNewsCategoriesEndpoint("business", 1, 6);
+  const fashionNewsEndpoint = getNewsCategoriesEndpoint("fashion", 1, 6);
   const musicNewsEndpoint = getNewsCategoriesEndpoint("music", 1, 6);
+  const footballNewsEndpoint = getNewsCategoriesEndpoint("football", 1, 6);
   const foodNewsEndpoint = getNewsCategoriesEndpoint("food", 1, 6);
   // Fetch-uim datele de la The Guardian.
   let technologyData = useFetch(technologyNewsEndpoint);
-  let footballData = useFetch(footballNewsEndpoint);
+  let businessData = useFetch(businessNewsEndpoint);
+  let fashionData = useFetch(fashionNewsEndpoint);
   let musicData = useFetch(musicNewsEndpoint);
+  let footballData = useFetch(footballNewsEndpoint);
   let foodData = useFetch(foodNewsEndpoint);
+
   // Adaptam datele de la server la datele necesare componentelor de react.
   const adaptedTechnologyData = getNewsList(technologyData);
-  const adaptedFootballData = getNewsList(footballData);
+  const adaptedBusinessData = getNewsList(businessData);
+  const adaptedFashionData = getNewsList(fashionData);
   const adaptedMusicData = getNewsList(musicData);
+  const adaptedFootballData = getNewsList(footballData);
   const adaptedFoodData = getNewsList(foodData);
 
   return (
@@ -40,29 +47,43 @@ function Home() {
           </p>
         </Container>
       </section>
-      <section className="music my-5">
+      <section className="business my-5">
         <Container>
-          <h1 className="mb-5 pt-3">Muzică</h1>
-          {/* Afisam stirile despre muzica. */}
-          <NewsCardList newsList={adaptedMusicData} />
+          <h1 className="mb-5 pt-3">Business</h1>
+          {/* Afisam stirile despre business. */}
+          <NewsCardList newsList={adaptedBusinessData} />
           <p>
-            Vezi toate știrile legate de tehnologie în secțiunea{" "}
-            <Link to="/category/music" className="text-secondary">
-              Muzica
+            Vezi toate știrile legate de business în secțiunea{" "}
+            <Link to="/category/business" className="text-secondary">
+              Business
             </Link>
             .
           </p>
         </Container>
       </section>
-      <section className="food my-5">
+      <section className="fashion my-5">
         <Container>
-          <h1 className="mb-5 pt-3">Mâncare</h1>
-          {/* Afisam stirile despre muzica. */}
-          <NewsCardList newsList={adaptedFoodData} />
+          <h1 className="mb-5 pt-3">Fashion</h1>
+          {/* Afisam stirile despre fashion. */}
+          <NewsCardList newsList={adaptedFashionData} />
           <p>
-            Vezi toate știrile legate de tehnologie în secțiunea{" "}
-            <Link to="/category/food" className="text-secondary">
-              Mâncare
+            Vezi toate știrile legate de fashion în secțiunea{" "}
+            <Link to="/category/fashion" className="text-secondary">
+              Fashion
+            </Link>
+            .
+          </p>
+        </Container>
+      </section>
+      <section className="music my-5">
+        <Container>
+          <h1 className="mb-5 pt-3">Musics</h1>
+          {/* Afisam stirile despre muzica. */}
+          <NewsCardList newsList={adaptedMusicData} />
+          <p>
+            Vezi toate știrile legate de muzică în secțiunea{" "}
+            <Link to="/category/music" className="text-secondary">
+              Musics
             </Link>
             .
           </p>
@@ -74,9 +95,23 @@ function Home() {
           {/* Afisam stirile despre fotbal. */}
           <NewsCardList newsList={adaptedFootballData} />
           <p>
-            Vezi toate știrile legate de tehnologie în secțiunea{" "}
+            Vezi toate știrile legate de fotbal în secțiunea{" "}
             <Link to="/category/football" className="text-secondary">
               Fotbal
+            </Link>
+            .
+          </p>
+        </Container>
+      </section>
+      <section className="food my-5">
+        <Container>
+          <h1 className="mb-5 pt-3">Foods</h1>
+          {/* Afisam stirile despre muzica. */}
+          <NewsCardList newsList={adaptedFoodData} />
+          <p>
+            Vezi toate știrile legate de mâncare în secțiunea{" "}
+            <Link to="/category/food" className="text-secondary">
+              Foods
             </Link>
             .
           </p>

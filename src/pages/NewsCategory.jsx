@@ -32,13 +32,19 @@ function NewsCategory() {
   let title = "";
   switch (categoryId) {
     case "technology":
-      title = "Tech";
+      title = "Tehnologie";
       break;
-    case "football":
-      title = "Fotbal";
+    case "business":
+      title = "Afaceri";
+      break;
+    case "fashion":
+      title = "Modă";
       break;
     case "music":
       title = "Muzică";
+      break;
+    case "football":
+      title = "Fotbal";
       break;
     case "food":
       title = "Mâncare";

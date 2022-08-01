@@ -44,18 +44,26 @@ function Header() {
               </li>
               <li className={isDisplayed ? "container" : null}>
                 <Link
-                  to="/category/music"
+                  to="/category/business"
                   className="p-3 text-uppercase text-light"
                 >
-                  Muzică
+                  Business
                 </Link>
               </li>
               <li className={isDisplayed ? "container" : null}>
                 <Link
-                  to="/category/food"
+                  to="/category/fashion"
                   className="p-3 text-uppercase text-light"
                 >
-                  Mâncare
+                  Fashion
+                </Link>
+              </li>
+              <li className={isDisplayed ? "container" : null}>
+                <Link
+                  to="/category/music"
+                  className="p-3 text-uppercase text-light"
+                >
+                  Musics
                 </Link>
               </li>
               <li className={isDisplayed ? "container" : null}>
@@ -64,6 +72,14 @@ function Header() {
                   className="p-3 text-uppercase text-light"
                 >
                   Fotbal
+                </Link>
+              </li>
+              <li className={isDisplayed ? "container" : null}>
+                <Link
+                  to="/category/food"
+                  className="p-3 text-uppercase text-light"
+                >
+                  Foods
                 </Link>
               </li>
               <li className={isDisplayed ? "container" : null}>
