@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import Container from "react-bootstrap/Container";
@@ -12,16 +12,26 @@ import styles from "./NewsDetails.module.css";
 import { getFormattedDate } from "../utils/date";
 import { addToFavorites } from "../store/Favorites/actions";
 import { FavoritesContext } from "../store/Favorites/context";
+import { useLocalStorage } from "../utils/hooks/useLocalStorage";
 import Alert from "react-bootstrap/Alert";
 
 function NewsDetails() {
-  const { favoritesDispatch } = useContext(FavoritesContext);
+  const { favoritesDispatch, favoritesState } = useContext(FavoritesContext);
   let { newsId } = useParams();
   newsId = decodeURIComponent(newsId);
   const newsDetailsEndpoint = getNewsDetailsEndpoint(newsId);
   const newsDetails = useFetch(newsDetailsEndpoint);
   const adaptedNewsDetails = getNewsDetails(newsDetails);
   const [alertDisplay, setAlertDisplay] = useState(false);
+
+  const [_, setLocalStorageState] = useLocalStorage(
+    "favorites",
+    favoritesState
+  );
+
+  useEffect(() => {
+    setLocalStorageState(favoritesState);
+  }, [favoritesState, setLocalStorageState]);
 
   const { title, description, image, date, author, content, thumbnail } =
     adaptedNewsDetails;
