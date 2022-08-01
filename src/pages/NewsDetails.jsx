@@ -28,7 +28,7 @@ function NewsDetails() {
     "favorites",
     favoritesState
   );
-
+  //Am creat useEffect pentru localStorage
   useEffect(() => {
     setLocalStorageState(favoritesState);
   }, [favoritesState, setLocalStorageState]);
